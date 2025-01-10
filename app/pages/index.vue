@@ -1,0 +1,13 @@
+//vbase-3-ts-setup
+
+<script setup lang="ts">
+definePageMeta({
+    layout: 'default'
+})
+</script>
+
+<template>
+    <div>
+        <h1>Home</h1>
+    </div>
+</template>

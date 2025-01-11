@@ -21,6 +21,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  image: {
+    domains: ["https://dummyjson.com"],
+  },
   features: {
     inlineStyles: true,
   },

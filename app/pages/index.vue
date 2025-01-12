@@ -1,5 +1,7 @@
 // vbase-3-ts-setup
 
+// https://dummyjson.com/docs/recipes
+
 // https://icon-sets.iconify.design/
 
 <script setup lang="ts">
@@ -8,6 +10,18 @@ import { type RecipeResponse } from '../../types/types'
 
 const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/recipes?limit=12')
 
+useSeoMeta({
+    title: "Nuxtcipes",
+    description: "Recipes for you to cook!",
+    ogTitle: "Nuxtcipes",
+    ogDescription: "Recipes for you to cook!",
+    ogImage: "/nuxt-course-hero.png",
+    ogUrl: `http:localhost:3000`,
+    twitterTitle: "Nuxtcipes",
+    twitterDescription: "Recipes for you to cook!",
+    twitterImage: "nuxt-course-hero.png",
+    twitterCard: "summary",
+});
 </script>
 
 <template>
@@ -34,7 +48,7 @@ const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/re
         <section class="py-20 container">
             <h2 class="text-3xl lg:text-5xl mb-2">Discover, Create, Share</h2>
             <p class="text-lg lg:text-xl mb-8">Check out our most popular recipes!</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
+            <div v-if="!error" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
                 <div v-for="recipe in data?.recipes" class="flex flex-col shadow rounded-md">
                     <NuxtImg sizes="xs:100vw sm:50vw lg:400px" format="webp" densities="x1" :src="recipe.image" alt=""
                         class="rounded-t-md" />
@@ -61,6 +75,8 @@ const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/re
                     </div>
                 </div>
             </div>
+            <p v-else class="text-xl">Oops, something went wrong. Please try again later.
+            </p>
         </section>
     </main>
 </template>

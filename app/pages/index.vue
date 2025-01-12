@@ -74,6 +74,7 @@ useSeoMeta({
                         </NuxtLink>
                     </div>
                 </div>
+                <RecipeCard v-for="recipe in data?.recipes" :recipe="recipe" />
             </div>
             <p v-else class="text-xl">Oops, something went wrong. Please try again later.
             </p>
